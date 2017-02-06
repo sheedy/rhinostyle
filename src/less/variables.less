@@ -99,9 +99,9 @@
 @btn-icon-padding-large:            @btn-height-large / 4;
 @btn-icon-padding-small:            @btn-height-small / 4;
 
-@btn-padding-base:                  @whitespace-base;
-@btn-padding-large:                 @whitespace-base;
-@btn-padding-small:                 @whitespace-small;
+@btn-padding-base:                  @padding-base;
+@btn-padding-large:                 @padding-large;
+@btn-padding-small:                 @padding-base;
 
 @btn-accent-color:                  @color-white;
 @btn-accent-bg:                     @color-accent;
@@ -201,8 +201,8 @@
 
 
 // fine-tune component padding
-@padding-gutter:            @grid-gutter-width; // 32px
-@padding-half-gutter:       @grid-gutter-width / 2; // 16px
+@padding-gutter:            @whitespace-large;
+@padding-half-gutter:       @whitespace-base;
 @padding-xlarge:            1.4rem;
 @padding-large:             1.2rem;
 @padding-base:              1rem;
@@ -210,8 +210,8 @@
 @padding-xsmall:            .4rem;
 
 // fine-tune component margin
-@margin-gutter:             @grid-gutter-width; // 32px
-@margin-half-gutter:        @grid-gutter-width / 2; // 16px
+@margin-gutter:             @whitespace-large;
+@margin-half-gutter:        @whitespace-base;
 @margin-xlarge:             1.4rem;
 @margin-large:              1.2rem;
 @margin-base:               1rem;
@@ -223,18 +223,6 @@
 
 @caret-width-base:          .5rem; // width of the `border` for generating carets that indicator dropdowns
 @caret-width-large:         .6rem;
-
-
-// -------------------------
-// Whitespace
-// -------------------------
-
-
-@whitespace-xsmall: .4rem;
-@whitespace-small : .8rem;
-@whitespace-base  : 1.6rem;
-@whitespace-large : 3.2rem;
-@whitespace-xlarge: 6.4rem;
 
 
 // -------------------------
@@ -279,7 +267,7 @@
 @dropdown-link-active-bg:        @component-active-bg;
 @dropdown-link-disabled-color:   @color-gray-light;
 @dropdown-menu-shadow:           @shadow-depth-1;
-@dropdown-padding:               @padding-small @padding-xlarge;
+@dropdown-padding:               @whitespace-xsmall @whitespace-base;
 
 
 // -------------------------
@@ -353,7 +341,7 @@
 @label-link-hover-color:    @color-white;
 
 
-@label-padding-sides:       .5rem;
+@label-padding-sides:       @whitespace-xsmall;
 
 @label-padding:             0 @label-padding-sides;
 
@@ -400,8 +388,9 @@
 
 @msg-border-radius:           @border-radius-base;
 @msg-line-height:             inherit;
+@msg-arrow-size:              1rem;
 @msg-margin:                  @margin-base;
-@msg-padding:                 @padding-base - .1rem @padding-base @padding-base @padding-base;
+@msg-padding:                 @whitespace-base;
 @msg-shadow-x:                0;
 @msg-shadow-y:                2px;
 @msg-shadow-blur:             2px;
@@ -628,7 +617,7 @@
 // -------------------------
 
 
-@system-alert-padding:              @padding-base @padding-large;
+@system-alert-padding:              @whitespace-small @whitespace-base;
 @system-alert-text:                 @color-white;
 
 
@@ -658,7 +647,7 @@
 
 @toast-border-radius:        @border-radius-base;
 @toast-font-weight:          @font-weight-light;
-@toast-padding:              @padding-base;
+@toast-padding:              @whitespace-small;
 @toast-text:                 @color-white;
 
 
@@ -739,6 +728,19 @@
 @line-height-computed:    @font-size-base * @line-height-base; // ~22px
 @line-height-large:       1.3333333; // extra decimals for Win 8.1 Chrome
 @line-height-small:       1.2;
+
+
+// -------------------------
+// Whitespace
+// -------------------------
+
+
+@whitespace-base  : 1.6rem;
+@whitespace-large : 3.2rem;
+@whitespace-medium: 2.4rem;
+@whitespace-small : .8rem;
+@whitespace-xlarge: 6.4rem;
+@whitespace-xsmall: .4rem;
 
 
 // -------------------------

@@ -64,31 +64,30 @@
 .msg--outbound {
   &::before {
     background: inherit;
-    background-clip: border-box;
-    border: inherit;
-    border-bottom: 0;
     border-right: 0;
+    border-top: 0;
     content: '';
-    padding: .6rem;
+    height: @msg-arrow-size;
     position: absolute;
-    top: 1.4rem;
+    top: 50%;
+    width: @msg-arrow-size;
   }
 }
 
 .msg--inbound {
-  margin-left: @msg-margin;
+  margin-left: @msg-arrow-size;
 
   &::before {
-    left: -.5rem;
-    transform: rotate(45deg);
+    left: 0;
+    transform: rotate(45deg) translateX(-75%);
   }
 }
 
 .msg--outbound {
-  margin-right: @msg-margin;
+  margin-right: @msg-arrow-size;
 
   &::before {
-    right: -.5rem;
-    transform: rotate(-45deg);
+    right: 0;
+    transform: rotate(-45deg) translateX(75%);
   }
 }

@@ -52,7 +52,7 @@
 
 .cover__header__container,
 .cover__footer__container {
-  padding: @padding-half-gutter;
+  padding: @whitespace-base;
 }
 
 .cover__header__close-btn {
@@ -64,13 +64,13 @@
   .u-text-overflow;
   align-items: center;
   display: flex;
-  font-size: 2rem;
+  font-size: @font-size-large;
   line-height: @line-height-small;
   margin: 0;
 }
 
 .cover__header__title__icon {
-  margin-right: 1rem;
+  margin-right: @whitespace-small;
 }
 
 
@@ -93,7 +93,7 @@
 
 .cover__body__container {
   margin: 0 auto;
-  padding: @padding-gutter @padding-half-gutter;
+  padding: @whitespace-large @whitespace-base;
 }
 
 .cover__body__container--sm {
@@ -122,6 +122,6 @@
   // Properly space out buttons
   .btn + .btn {
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
-    margin-left: @margin-small;
+    margin-left: @whitespace-small;
   }
 }
