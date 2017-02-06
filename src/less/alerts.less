@@ -86,7 +86,6 @@
   }
 
   a {
-    //font-style: normal;
     text-decoration: underline;
   }
 
@@ -104,11 +103,12 @@
 
 .alert__close {
   position: absolute !important;
-  right: 1rem;
-  top: 1.5rem;
+  right: @alert-padding;
+  top: @alert-padding;
 
   .alert--sm & {
-    top: 1.25rem;
+    right: @alert-padding-small;
+    top: @alert-padding-small;
   }
 }
 
@@ -124,6 +124,5 @@
 }
 
 .alert__title__icon {
-  margin-right: @margin-small;
-  top: .2rem;
+  margin-right: @whitespace-xsmall;
 }

@@ -10,8 +10,8 @@
 
 
 @alert-border-radius:         @border-radius-base;
-@alert-padding:               @padding-xlarge;
-@alert-padding-small:         @padding-base;
+@alert-padding:               @whitespace-base;
+@alert-padding-small:         @whitespace-small;
 
 
 // -------------------------
@@ -67,8 +67,8 @@
 
 @bucket-bg:                      @color-white;
 @bucket-border-radius:           @border-radius-base;
-@bucket-padding:                 @padding-xlarge;
-@bucket-padding-small:           @padding-base;
+@bucket-padding:                 @whitespace-base;
+@bucket-padding-small:           @whitespace-small;
 
 @bucket-default-border:          @border-color-base;
 @bucket-light-border:            @color-gray-lighter;
@@ -99,9 +99,9 @@
 @btn-icon-padding-large:            @btn-height-large / 4;
 @btn-icon-padding-small:            @btn-height-small / 4;
 
-@btn-padding-base:                  @padding-base; // 1rem
-@btn-padding-large:                 @padding-large; // 1.2rem
-@btn-padding-small:                 @padding-base;
+@btn-padding-base:                  @whitespace-base;
+@btn-padding-large:                 @whitespace-base;
+@btn-padding-small:                 @whitespace-small;
 
 @btn-accent-color:                  @color-white;
 @btn-accent-bg:                     @color-accent;
@@ -191,6 +191,9 @@
 @color-gray-lightest:       #f9f9f9;
 @color-white:               #fff;
 
+// Disabled opacity
+@disabled-opacity: .5;
+
 
 // -------------------------
 // Components
@@ -220,6 +223,18 @@
 
 @caret-width-base:          .5rem; // width of the `border` for generating carets that indicator dropdowns
 @caret-width-large:         .6rem;
+
+
+// -------------------------
+// Whitespace
+// -------------------------
+
+
+@whitespace-xsmall: .4rem;
+@whitespace-small : .8rem;
+@whitespace-base  : 1.6rem;
+@whitespace-large : 3.2rem;
+@whitespace-xlarge: 6.4rem;
 
 
 // -------------------------

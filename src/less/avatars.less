@@ -20,6 +20,7 @@
   letter-spacing: .1rem;
   overflow: hidden;
   pointer-events: none;
+  position: relative;
   text-transform: uppercase;
   vertical-align: middle;
   width: @avatar-size-base;
@@ -68,9 +69,9 @@
 
 .avatar__icon {
   fill: currentColor;
-  height: 86%;
+  height: 100%;
   opacity: .4;
   position: relative;
-  top: 12%;
-  width: 86%;
+  transform: translateY(10%);
+  width: 85%;
 }

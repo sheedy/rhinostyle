@@ -15,7 +15,7 @@ a {
   &[disabled] {
     box-shadow: none;
     cursor: @cursor-disabled;
-    opacity: .5;
+    opacity: @disabled-opacity;
   }
 }
 
@@ -73,7 +73,7 @@ button {
   fieldset[disabled] & {
     box-shadow: none;
     cursor: @cursor-disabled;
-    opacity: .5;
+    opacity: @disabled-opacity;
     pointer-events: none;
   }
 
