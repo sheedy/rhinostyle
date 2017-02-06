@@ -65,7 +65,7 @@
 
 // Shell div to position the modal with bottom padding
 .modal__container {
-  margin: @margin-base @margin-base 2.6rem @margin-base;
+  margin: @whitespace-base;
   position: relative;
   width: auto;
 }
@@ -96,12 +96,12 @@
 .modal__header {
   border-bottom: 2px solid @modal-header-border-color;
   display: flex;
-  min-height: (@modal-header-padding-vert + @modal-header-line-height);
-  padding: @modal-header-padding-vert @modal-header-padding-hor @modal-header-padding-vert - .2rem;
+  min-height: (@modal-header-padding * 2);
+  padding: @modal-header-padding;
 }
 
 .modal__header__close {
-  font-size: 2rem;
+  font-size: @font-size-large;
   margin-left: auto;
   top: 0;
 }
@@ -112,11 +112,11 @@
   display: flex;
   line-height: 1.2;
   margin: 0;
-  padding-right: @padding-base;
+  padding-right: @whitespace-base;
 }
 
 .modal__header__title__icon {
-  margin-right: 1rem;
+  margin-right: @whitespace-small;
 }
 
 
@@ -143,7 +143,7 @@
   // Properly space out buttons
   .btn + .btn {
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
-    margin-left: @margin-small;
+    margin-left: @whitespace-small;
   }
 }
 
