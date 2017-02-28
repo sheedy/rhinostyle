@@ -35,10 +35,18 @@
 
 .msg--default {
   background: darken(@color-gray-lightest, 2%);
+
+  &::before {
+    border-color: darken(@color-gray-lightest, 2%);
+  }
 }
 
 .msg--note {
   background: #f6f2bc;
+
+  &::before {
+    border-color: #f6f2bc;
+  }
 
   a {
     color: inherit;
@@ -48,6 +56,10 @@
 .msg--primary {
   background: @color-primary-rich;
   color: @color-white;
+
+  &::before {
+    border-color: @color-primary-rich;
+  }
 
   a {
     color: inherit;
@@ -63,32 +75,28 @@
 .msg--inbound,
 .msg--outbound {
   &::before {
-    background: inherit;
-    background-clip: border-box;
-    border: inherit;
-    border-bottom: 0;
-    border-right: 0;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0 20px;
+    bottom: 0;
+    clip: rect(20px, 35px, 42px, 0);
     content: '';
-    padding: .6rem;
+    height: 40px;
     position: absolute;
-    top: 1.4rem;
+    width: 70px;
+    z-index: -1;
   }
 }
 
 .msg--inbound {
-  margin-left: @msg-margin;
-
   &::before {
-    left: -.5rem;
-    transform: rotate(45deg);
+    left: -50px;
+    transform: rotateY(180deg);
   }
 }
 
 .msg--outbound {
-  margin-right: @msg-margin;
-
   &::before {
-    right: -.5rem;
-    transform: rotate(-45deg);
+    right: -50px;
   }
 }
