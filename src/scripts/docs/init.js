@@ -1,44 +1,93 @@
 import { TimelineMax, SteppedEase } from 'gsap';
 import CodeMirror from 'codemirror';
-import { UtilitySystem } from '../UtilitySystem';
+import UtilitySystem from '../UtilitySystem';
 
 const $html = document.documentElement;
+const $body = document.body;
+const $siteNav = document.querySelector('.site-navigation');
 const $siteOverlay = document.querySelector('#site-overlay');
 
 // Init CodeMirror
-CodeMirror(document.body, {
+CodeMirror($body, {
   mode: 'javascript',
   lineWrapping: true,
 });
 
-// Navigation listener
-UtilitySystem.optimizedResize.add(() => {
-  // nav toggling below 1200px
-  if (window.matchMedia('(max-width: 1199px)').matches) {
-    $html.classList.remove('navigation-is-locked');
-  }
+//
+// Navigation timelines
+//
 
-  // lock nav in open position at 1200px
-  if (window.matchMedia('(min-width: 1200px)').matches) {
-    $html.classList.remove('navigation-is-open');
-    $html.classList.add('navigation-is-locked');
-  }
+// For opening/closing nav
+const navToggleTimeline = new TimelineMax({ paused: true });
 
-  // panel toggling below 1500px
-  if (window.matchMedia('(max-width: 1499px)').matches) {
-    $siteOverlay.addEventListener('click', () => {
-      $html.classList.remove('panel-is-open');
-    });
-  }
+/*navToggleTimeline
+.set($body, {
+  height: '100%',
+  overflow: 'hidden',
+})
+.to('.site-overlay', 0.15, {
+  opacity: 0.2,
+  zIndex: 15,
+  ease: UtilitySystem.config.easing,
+}, 'open')
+.to($siteNav, 0.15, {
+  x: 0,
+  ease: UtilitySystem.config.easing,
+}, 'open')
+.to('.site-wrapper', 0.15, {
+  x: $siteNav.offsetWidth,
+  ease: UtilitySystem.config.easing,
+}, 'open');*/
+
+// For locking nav (on larger screens)
+const navLockedTimeline = new TimelineMax({
+  paused: true,
+  onComplete() {
+    $html.classList.remove('is-loading');
+  },
 });
 
+navLockedTimeline
+.to($siteNav, 0.15, {
+  x: 0,
+  ease: UtilitySystem.config.easing,
+}, 'locked')
+.to('.site-wrapper', 0.15, {
+  marginLeft: $siteNav.offsetWidth,
+  ease: UtilitySystem.config.easing,
+}, 'locked');
+
+// Navigation listener
+UtilitySystem.optimizedResize.add(() => {
+  navLocked();
+});
+
+function navLocked() {
+  // nav toggling below 1200px
+  // Check if the animation is completed
+  // Closed by default
+  if (window.matchMedia('(max-width: 1199px)').matches) {
+    navLockedTimeline.reverse();
+  }
+
+  // Lock nav in open position at 1200px
+  // Check if we haven't run the animation yet
+  if (window.matchMedia('(min-width: 1200px)').matches) {
+    navLockedTimeline.play();
+  }
+}
+
+function navInit() {
+  navLocked();
+}
+
 document.querySelector('.site-header__menu').addEventListener('click', () => {
-  document.querySelector('#site-navigation').scrollTop = 0;
-  $html.classList.add('navigation-is-open');
+  document.body.scrollTop = 0;
+  navToggleTimeline.play();
 });
 
 $siteOverlay.addEventListener('click', () => {
-  $html.classList.remove('navigation-is-open');
+  navToggleTimeline.reverse();
 });
 
 // SVG loader
@@ -107,3 +156,6 @@ if (navLocation) {
 } else {
   document.querySelector('.site-navigation__nav a[href=""').classList.add('active');
 }
+
+
+navInit();
