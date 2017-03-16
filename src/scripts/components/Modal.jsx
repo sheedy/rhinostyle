@@ -86,6 +86,8 @@ class Modal extends React.Component {
       },
       ease: config.easing,
     });
+
+    $modal.timeline.play();
   }
 
   componentWillUnmount() {
