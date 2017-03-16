@@ -52,7 +52,6 @@ import UtilityInlineGrid    from './UtilityInlineGrid';
 
 import { CoverSystem } from '../CoverSystem';
 import { NotificationActions } from '../NotificationSystem';
-import { ModalSystem } from '../ModalSystem';
 /* eslint no-duplicate-imports:0 */
 /* eslint import/no-duplicates:0 */
 
@@ -90,7 +89,6 @@ export {
   Message,
   MessageBox,
   Modal,
-  ModalSystem,
   ModalBody,
   ModalFooter,
   ModalHeader,

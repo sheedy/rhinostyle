@@ -1,7 +1,6 @@
 /* eslint no-return-assign:0 */
 import cx                 from 'classnames';
 import React              from 'react';
-import ReactDOM           from 'react-dom';
 import { TimelineMax } from 'gsap';
 import { config } from '../config';
 
@@ -31,7 +30,6 @@ class Modal extends React.Component {
   componentDidMount() {
     const $body = document.body;
     const $modal = this.modal;
-    const $modalContainer = document.querySelector('[data-js="modalContainer"]');
 
     let forward = true;
     let lastTime = 0;
@@ -68,16 +66,6 @@ class Modal extends React.Component {
         this.props.onComplete();
       },
       onReverseComplete: () => {
-        ReactDOM.unmountComponentAtNode($modalContainer);
-
-        // Remove container from DOM if it's there
-        // The aforementioned should actually remove the container already
-        // but because we're rendering outside of the app, things
-        // can get in a weird state. @TODO CLEAN THIS UP, render within app
-        // with `ReactDOM.unstable_renderSubtreeIntoContainer()`
-        if ($modalContainer) {
-          $body.removeChild($modalContainer);
-        }
         // Fire off prop update
         this.props.onReverseComplete();
       },
@@ -98,6 +86,12 @@ class Modal extends React.Component {
       },
       ease: config.easing,
     });
+  }
+
+  componentWillUnmount() {
+    const $modal = this.modal;
+
+    $modal.timeline.reverse();
   }
 
   render() {
