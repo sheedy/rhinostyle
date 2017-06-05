@@ -21206,11 +21206,17 @@ var CheckboxGroup = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CheckboxGroup.__proto__ || Object.getPrototypeOf(CheckboxGroup)).call.apply(_ref, [this].concat(args))), _this), _this.renderChildren = function () {
-      var children = _this.props.children;
+      var _this$props = _this.props,
+          children = _this$props.children,
+          inline = _this$props.inline;
 
 
       return _react2.default.Children.map(children, function (child) {
-        return _react2.default.createElement(
+        return inline ? _react2.default.createElement(
+          'div',
+          null,
+          child
+        ) : _react2.default.createElement(
           _components.UtilityListItem,
           null,
           child
@@ -21349,6 +21355,8 @@ var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _components = __webpack_require__(4);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21434,7 +21442,7 @@ var Cover = function (_React$Component) {
           opacity: 1,
           scale: 1
         },
-        ease: _gsap.Expo.easeInOut
+        ease: _components.UtilitySystem.config.easing
       });
     }
   }, {
@@ -23837,7 +23845,7 @@ var MessageBox = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       if (this.props.focus && this.rhinoTextArea) {
-        this.rhinoTextArea.focus();
+        this.rhinoTextArea._rootDOMNode.focus();
       }
     }
   }, {
@@ -23853,7 +23861,7 @@ var MessageBox = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps) {
       if (prevProps.focus !== this.props.focus && this.props.focus) {
-        this.rhinoTextArea.focus();
+        this.rhinoTextArea._rootDOMNode.focus();
       }
     }
   }, {
@@ -24753,7 +24761,8 @@ var RadioGroup = function (_React$Component) {
     }, _this.renderChildren = function () {
       var _this$props = _this.props,
           children = _this$props.children,
-          name = _this$props.name;
+          name = _this$props.name,
+          inline = _this$props.inline;
       var selectedValue = _this.state.selectedValue;
 
 
@@ -24781,7 +24790,11 @@ var RadioGroup = function (_React$Component) {
           returnChild = child;
         }
 
-        return _react2.default.createElement(
+        return inline ? _react2.default.createElement(
+          'div',
+          null,
+          returnChild
+        ) : _react2.default.createElement(
           _components.UtilityListItem,
           null,
           returnChild
@@ -25839,7 +25852,7 @@ var UtilityInlineGrid = function UtilityInlineGrid(props) {
   });
 
   return _react2.default.createElement(
-    'ul',
+    'div',
     { className: classes },
     props.children
   );
