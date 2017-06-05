@@ -24,6 +24,11 @@ const paths = {
     dist:  './dist/audio/',
     build: './build/audio/',
   },
+  fonts: {
+    src:   './src/fonts/*',
+    dist:  './dist/fonts/',
+    build: './build/fonts/',
+  },
   media: {
     src: './src/media/*',
     dist: './dist/media/',

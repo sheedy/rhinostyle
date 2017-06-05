@@ -4,7 +4,7 @@
 
 @base-root-font-size: 10px;
 @base-body-background: @global-background;
-@base-body-font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@base-body-font-family: 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 @base-body-font-weight: @global-font-weight-normal;
 @base-body-font-size: @global-font-size-base;
 @base-body-line-height: @global-line-height-base;
@@ -15,7 +15,7 @@
 @base-link-hover-color: @global-color-primary-hover;
 @base-link-hover-text-decoration: none;
 @base-code-color: @global-color-danger;
-@base-code-font-size: @global-font-size-small;
+@base-code-font-size: 85%;
 @base-code-font-family: 'Operator Mono', Consolas, monospace, serif;
 @base-em-color: @global-font-color;
 @base-ins-background: #ffa;
@@ -25,11 +25,12 @@
 @base-quote-font-style: italic;
 @base-margin-vertical: @global-whitespace-base;
 @base-heading-line-height: @global-line-height-small;
-@base-heading-font-family: @base-body-font-family;
-@base-heading-font-weight: @global-font-weight-normal;
+@base-heading-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@base-heading-font-weight: @global-font-weight-medium;
 @base-heading-color: @global-font-heading-color;
 @base-heading-text-transform: none;
 @base-heading-margin-top: @global-whitespace-large;
+@base-heading-letter-spacing: 0.005em;
 @base-h1-font-size: 3rem;
 @base-h1-font-weight: @base-heading-font-weight;
 @base-h1-line-height: @base-heading-line-height;
@@ -37,16 +38,16 @@
 @base-h2-font-weight: @base-heading-font-weight;
 @base-h2-line-height: @base-heading-line-height;
 @base-h3-font-size: 2.2rem;
-@base-h3-font-weight: @global-font-weight-bold;
+@base-h3-font-weight: @base-heading-font-weight;
 @base-h3-line-height: @base-heading-line-height;
 @base-h4-font-size: 1.8rem;
-@base-h4-font-weight: @global-font-weight-bold;
+@base-h4-font-weight: @global-font-weight-semibold;
 @base-h4-line-height: @base-heading-line-height;
 @base-h5-font-size: 1.6rem;
-@base-h5-font-weight: @global-font-weight-bold;
+@base-h5-font-weight: @global-font-weight-semibold;
 @base-h5-line-height: @base-heading-line-height;
 @base-h6-font-size: 1.4rem;
-@base-h6-font-weight: @global-font-weight-bold;
+@base-h6-font-weight: @global-font-weight-semibold;
 @base-h6-line-height: @base-heading-line-height;
 @base-list-padding-left: @global-whitespace-large;
 @base-hr-margin-vertical: @base-margin-vertical;
@@ -195,7 +196,7 @@ abbr {
 // Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
 b,
 strong {
-  font-weight: @global-font-weight-bold;
+  font-weight: @global-font-weight-semibold;
   color: @base-heading-color;
 }
 
@@ -349,7 +350,6 @@ h4,
 h5,
 h6 {
   margin: 0 0 @base-margin-vertical;
-  font-family: @base-heading-font-family;
   color: @base-heading-color;
   text-transform: @base-heading-text-transform;
 }
@@ -366,39 +366,27 @@ h6 {
 
 // Sizes
 h1 {
-  font-size: @base-h1-font-size;
-  font-weight: @base-h1-font-weight;
-  line-height: @base-h1-line-height;
+  .mixin-heading(h1);
 }
 
 h2 {
-  font-size: @base-h2-font-size;
-  font-weight: @base-h2-font-weight;
-  line-height: @base-h2-line-height;
+  .mixin-heading(h2);
 }
 
 h3 {
-  font-size: @base-h3-font-size;
-  font-weight: @base-h3-font-weight;
-  line-height: @base-h3-line-height;
+  .mixin-heading(h3);
 }
 
 h4 {
-  font-size: @base-h4-font-size;
-  font-weight: @base-h4-font-weight;
-  line-height: @base-h4-line-height;
+  .mixin-heading(h4);
 }
 
 h5 {
-  font-size: @base-h5-font-size;
-  font-weight: @base-h5-font-weight;
-  line-height: @base-h5-line-height;
+  .mixin-heading(h5);
 }
 
 h6 {
-  font-size: @base-h6-font-size;
-  font-weight: @base-h6-font-weight;
-  line-height: @base-h6-line-height;
+  .mixin-heading(h6);
 }
 
 //

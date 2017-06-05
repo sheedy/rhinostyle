@@ -17,16 +17,16 @@
 
 
 .avatar {
+  .mixin-heading(h3);
+
   align-items: center;
   background-position: center center;
   background-size: cover;
   border-radius: 50%;
   color: @global-color-white;
   display: inline-flex;
-  font-size: @base-h3-font-size;
   height: @avatar-size-base;
   justify-content: center;
-  letter-spacing: 0.1rem;
   margin-bottom: 0;
   overflow: hidden;
   pointer-events: none;
@@ -56,13 +56,15 @@
 
 
 .avatar--large {
-  font-size: @base-h2-font-size;
+  .mixin-heading(h2);
+
   height: @avatar-size-large;
   width: @avatar-size-large;
 }
 
 .avatar--small {
-  font-size: @base-h6-font-size;
+  .mixin-heading(h6);
+
   height: @avatar-size-small;
   // use min-width to prevent flex shrinking since we know the width
   // otherwise we would use flex-shrink: 0;

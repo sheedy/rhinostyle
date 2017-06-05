@@ -16,8 +16,6 @@
 @modal-medium: 60rem;
 @modal-small: 30rem;
 
-@modal-header-line-height: @base-heading-line-height;
-
 @modal-zindex: 1020;
 
 
@@ -110,10 +108,11 @@
 }
 
 .modal__header__title {
+  .mixin-heading(h4);
+
   .u-text-overflow;
   align-items: center;
   display: flex;
-  line-height: @global-line-height-small;
   margin: 0;
   padding-right: @global-whitespace-base;
 }
