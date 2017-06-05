@@ -9,34 +9,8 @@
   @font-weight: 'base-@{size}-font-weight';
   @line-height: 'base-@{size}-line-height';
 
+  font-family: @base-heading-font-family;
   font-size: @@font-size;
   font-weight: @@font-weight;
   line-height: @@line-height;
-
-  & when (@size = h1) {
-    font-family: @base-heading-font-family;
-    letter-spacing: @base-heading-letter-spacing;
-  }
-
-  & when (@size = h2) {
-    font-family: @base-heading-font-family;
-    letter-spacing: @base-heading-letter-spacing;
-  }
-
-  & when (@size = h3) {
-    font-family: @base-heading-font-family;
-    letter-spacing: @base-heading-letter-spacing;
-  }
-
-  & when (@size = h4) {
-    font-family: @base-body-font-family;
-  }
-
-  & when (@size = h5) {
-    font-family: @base-body-font-family;
-  }
-
-  & when (@size = h6) {
-    font-family: @base-body-font-family;
-  }
 }

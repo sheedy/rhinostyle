@@ -4,7 +4,7 @@
 
 @base-root-font-size: 10px;
 @base-body-background: @global-background;
-@base-body-font-family: 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@base-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 @base-body-font-weight: @global-font-weight-normal;
 @base-body-font-size: @global-font-size-base;
 @base-body-line-height: @global-line-height-base;
@@ -25,8 +25,8 @@
 @base-quote-font-style: italic;
 @base-margin-vertical: @global-whitespace-base;
 @base-heading-line-height: @global-line-height-small;
-@base-heading-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-@base-heading-font-weight: @global-font-weight-medium;
+@base-heading-font-family: @base-body-font-family;
+@base-heading-font-weight: @global-font-weight-normal;
 @base-heading-color: @global-font-heading-color;
 @base-heading-text-transform: none;
 @base-heading-margin-top: @global-whitespace-large;
@@ -41,13 +41,13 @@
 @base-h3-font-weight: @base-heading-font-weight;
 @base-h3-line-height: @base-heading-line-height;
 @base-h4-font-size: 1.8rem;
-@base-h4-font-weight: @global-font-weight-semibold;
+@base-h4-font-weight: @global-font-weight-bold;
 @base-h4-line-height: @base-heading-line-height;
 @base-h5-font-size: 1.6rem;
-@base-h5-font-weight: @global-font-weight-semibold;
+@base-h5-font-weight: @global-font-weight-bold;
 @base-h5-line-height: @base-heading-line-height;
 @base-h6-font-size: 1.4rem;
-@base-h6-font-weight: @global-font-weight-semibold;
+@base-h6-font-weight: @global-font-weight-bold;
 @base-h6-line-height: @base-heading-line-height;
 @base-list-padding-left: @global-whitespace-large;
 @base-hr-margin-vertical: @base-margin-vertical;
@@ -196,7 +196,7 @@ abbr {
 // Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
 b,
 strong {
-  font-weight: @global-font-weight-semibold;
+  font-weight: @global-font-weight-bold;
   color: @base-heading-color;
 }
 

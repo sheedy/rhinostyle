@@ -6,7 +6,6 @@ import gulp from 'gulp';
 
 import { animationFlag, animationLogin, animationSecure, animationTime } from './config/animations';
 import audio from './config/audio';
-import fonts from './config/fonts';
 import icons from './config/icons';
 import clean from './config/clean';
 import deploy from './config/deploy';
@@ -27,7 +26,6 @@ gulp.task('animation:login', animationLogin);
 gulp.task('animation:secure', animationSecure);
 gulp.task('animation:time', animationTime);
 gulp.task('audio', audio);
-gulp.task('fonts', fonts);
 gulp.task('clean', clean);
 gulp.task('docs:deploy', deploy);
 gulp.task('dist:scripts', distScripts);

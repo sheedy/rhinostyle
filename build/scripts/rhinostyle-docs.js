@@ -21212,7 +21212,11 @@ var CheckboxGroup = function (_React$Component) {
 
 
       return _react2.default.Children.map(children, function (child) {
-        return inline ? child : _react2.default.createElement(
+        return inline ? _react2.default.createElement(
+          'div',
+          null,
+          child
+        ) : _react2.default.createElement(
           _components.UtilityListItem,
           null,
           child
@@ -23841,7 +23845,7 @@ var MessageBox = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       if (this.props.focus && this.rhinoTextArea) {
-        this.rhinoTextArea.focus();
+        this.rhinoTextArea._rootDOMNode.focus();
       }
     }
   }, {
@@ -23857,7 +23861,7 @@ var MessageBox = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps) {
       if (prevProps.focus !== this.props.focus && this.props.focus) {
-        this.rhinoTextArea.focus();
+        this.rhinoTextArea._rootDOMNode.focus();
       }
     }
   }, {
