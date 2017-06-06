@@ -1,40 +1,20 @@
 //
-// Variables
-//
-
-
-@icon-bump: 0.1em;
-
-
-//
 // Component
 //
 
 
 // 1. Fix Firefox blurry SVG rendering: https://bugzilla.mozilla.org/show_bug.cgi?id=1046835
-.icon {
-  display: inline-block;
-  fill: currentColor;
-  height: 1em;
-  line-height: 1;
-  min-width: 1em;
-  position: relative;
-  vertical-align: middle;
+.icon-wrapper {
+  display: inline-flex;
+  align-self: center;
   width: 1em;
-  // 1
-  transform: translate(0, 0);
-}
+  height: 1em;
 
-
-//
-// Icon Modifiers (Position)
-//
-
-
-.icon--bump-down {
-  top: @icon-bump;
-}
-
-.icon--bump-up {
-  top: -@icon-bump;
+  svg {
+    fill: currentColor;
+    height: 1em;
+    width: 1em;
+    // 1
+    transform: translate(0, 0);
+  }
 }

@@ -384,16 +384,10 @@
 
 
 .dropdown__toggle__caret {
-  .icon--bump-down;
-
-  fill: currentColor;
-  height: @dropdown-chevron-size;
-  line-height: 1;
+  height: @dropdown-chevron-size !important;
+  width: @dropdown-chevron-size !important;
   margin-left: @global-whitespace-xsmall;
-  min-width: @dropdown-chevron-size;
-  position: relative;
-  vertical-align: middle;
-  width: @dropdown-chevron-size;
+  margin-top: -(@dropdown-chevron-size / 3);
 }
 
 

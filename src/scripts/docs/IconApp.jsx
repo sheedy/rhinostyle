@@ -6,7 +6,6 @@ import { Icon, UtilityInlineGrid } from '../components';
 import iconExample from './examples/Icon.example.txt';
 
 const iconDocs = {
-  bump: '[Optional] - Bump [down | up] - used to move icon up or down slightly for precise positioning',
   className: '[Optional] - Include additional class name(s)',
   icon: '[Required] - Icon name',
 };

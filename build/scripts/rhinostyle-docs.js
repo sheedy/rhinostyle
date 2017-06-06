@@ -15529,7 +15529,6 @@ var _IconExample2 = _interopRequireDefault(_IconExample);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var iconDocs = {
-  bump: '[Optional] - Bump [down | up] - used to move icon up or down slightly for precise positioning',
   className: '[Optional] - Include additional class name(s)',
   icon: '[Required] - Icon name'
 };
@@ -16927,7 +16926,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var labelDocs = {
   className: '[Optional] - Include additional class name(s)',
   icon: '[Optional] - Icon name',
-  iconBump: '[Optional] - Icon bump [down | up] - used to move icon up or down slightly for precise positioning',
   label: '[Required] - Label text',
   type: '[Optional] - Label type -  [default | primary | secondary | accent]'
 };
@@ -21954,11 +21952,7 @@ var Dropdown = function (_React$Component) {
               { className: 'dropdown__toggle__text' },
               selectedLabel || label
             ),
-            hideCaret ? null : _react2.default.createElement(
-              'svg',
-              { className: 'dropdown__toggle__caret' },
-              _react2.default.createElement('use', { xlinkHref: '#icon-chevron-down' })
-            )
+            hideCaret ? null : _react2.default.createElement(_components.Icon, { className: 'dropdown__toggle__caret', icon: 'chevron-down' })
           )
         ),
         _react2.default.createElement(
@@ -23110,33 +23104,31 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Icon = function Icon(props) {
-  var bump = props.bump,
-      className = props.className;
+  var className = props.className;
 
-  var classes = (0, _classnames2.default)('icon', className, {
-    'icon--bump-down': bump === 'down',
-    'icon--bump-up': bump === 'up'
-  });
+  var classes = (0, _classnames2.default)('icon-wrapper', className);
 
   return _react2.default.createElement(
-    'svg',
+    'span',
     { className: classes, style: props.style },
-    _react2.default.createElement('use', { xlinkHref: '#icon-' + props.icon })
+    _react2.default.createElement(
+      'svg',
+      { className: 'icon' },
+      _react2.default.createElement('use', { xlinkHref: '#icon-' + props.icon })
+    )
   );
 };
 
 Icon.displayName = 'RhinoIcon';
 
 Icon.propTypes = {
-  bump: _react2.default.PropTypes.oneOf(['down', 'up']),
   className: _react2.default.PropTypes.string,
   icon: _react2.default.PropTypes.string.isRequired,
   style: _react2.default.PropTypes.object
 };
 
 Icon.defaultProps = {
-  className: '',
-  bump: null
+  className: ''
 };
 
 exports.default = Icon;
@@ -23461,7 +23453,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Label = function Label(props) {
   var className = props.className,
       icon = props.icon,
-      iconBump = props.iconBump,
       label = props.label,
       type = props.type;
 
@@ -23475,7 +23466,7 @@ var Label = function Label(props) {
   return _react2.default.createElement(
     'span',
     { className: classes },
-    icon ? _react2.default.createElement(_components.Icon, { icon: icon, bump: iconBump, className: 'label__icon' }) : null,
+    icon ? _react2.default.createElement(_components.Icon, { icon: icon, className: 'label__icon' }) : null,
     _react2.default.createElement(
       'span',
       null,
@@ -23489,7 +23480,6 @@ Label.displayName = 'RhinoLabel';
 Label.propTypes = {
   className: _react2.default.PropTypes.string,
   icon: _react2.default.PropTypes.string,
-  iconBump: _react2.default.PropTypes.oneOf(['down', 'up']),
   label: _react2.default.PropTypes.string.isRequired,
   type: _react2.default.PropTypes.string
 };
@@ -23497,7 +23487,6 @@ Label.propTypes = {
 Label.defaultProps = {
   className: '',
   icon: null,
-  iconBump: null,
   type: 'default'
 };
 
@@ -27938,7 +27927,7 @@ exports.stringify = function (obj, opts) {
 /* 675 */
 /***/ (function(module, exports) {
 
-module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div>\n        <Alert title=\"This is a default alert!\">This is a default alert for random stuff. <a href=\"\">text link</a> | <a href=\"\">text link</a></Alert>\n\n        <Alert title=\"This is a default alert with a title icon!\" titleIcon=\"star\">Donec eu erat sit amet arcu consectetur tincidunt nec eu quam. Mauris eros tortor, venenatis in lorem vel, fringilla suscipit erat. Integer velit arcu, pulvinar eu bibendum et, eleifend eu neque</Alert>\n\n        <Alert title=\"This is a default alert with a title icon and it's dismissible!\" titleIcon=\"lock\" onDismiss={() => alert('dismissed!')}>This is a default alert for random stuff.</Alert>\n\n        <Alert title=\"This is a default alert with a title icon, it's dismissible, and it has no children!\" titleIcon=\"lock\" onDismiss={() => alert('dismissed!')} />\n\n        <Alert onDismiss={() => alert('dismissed!')}>This is a default alert without a title and is dismissible.</Alert>\n\n        <Alert onDismiss={() => alert('dismissed!')}><Icon icon=\"cog\" bump=\"up\"/> This is a default alert without a title and is dismissible.</Alert>\n\n        <Alert title=\"Danger\" titleIcon=\"warning\" type=\"danger\">\n          Phasellus eu accumsan diam. Donec sed aliquet quam congue ac. <a href=\"javascript:void(0)\">congue aliquet arcu</a> blandit euismod enim turpis rutrum, dignissim ligula.<br /> <span className=\"u-text-normal\"><Checkbox inline name=\"exampleCheckbox666\" className=\"u-m-b-0\">Checkbox</Checkbox></span>\n        </Alert>\n\n        <Alert title=\"Default\" titleIcon=\"checkmark\" size=\"small\">\n          Phasellus eu accumsan diam. Donec sed aliquet quam congue ac. <a href=\"javascript:void(0)\">congue aliquet arcu</a> blandit euismod enim turpis rutrum, dignissim ligula.<br /> <span className=\"u-text-normal\"><Checkbox inline name=\"exampleCheckbox66666\" className=\"u-m-b-0\">Checkbox</Checkbox></span>\n        </Alert>\n\n      </div>\n    );\n  }\n}\nReactDOM.render(<ComponentExample />, mountNode);\n"
+module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div>\n        <Alert title=\"This is a default alert!\">This is a default alert for random stuff. <a href=\"\">text link</a> | <a href=\"\">text link</a></Alert>\n\n        <Alert title=\"This is a default alert with a title icon!\" titleIcon=\"star\">Donec eu erat sit amet arcu consectetur tincidunt nec eu quam. Mauris eros tortor, venenatis in lorem vel, fringilla suscipit erat. Integer velit arcu, pulvinar eu bibendum et, eleifend eu neque</Alert>\n\n        <Alert title=\"This is a default alert with a title icon and it's dismissible!\" titleIcon=\"lock\" onDismiss={() => alert('dismissed!')}>This is a default alert for random stuff.</Alert>\n\n        <Alert title=\"This is a default alert with a title icon, it's dismissible, and it has no children!\" titleIcon=\"lock\" onDismiss={() => alert('dismissed!')} />\n\n        <Alert onDismiss={() => alert('dismissed!')}>This is a default alert without a title and is dismissible.</Alert>\n\n        <Alert onDismiss={() => alert('dismissed!')}><Icon icon=\"cog\" /> This is a default alert without a title and is dismissible.</Alert>\n\n        <Alert title=\"Danger\" titleIcon=\"warning\" type=\"danger\">\n          Phasellus eu accumsan diam. Donec sed aliquet quam congue ac. <a href=\"javascript:void(0)\">congue aliquet arcu</a> blandit euismod enim turpis rutrum, dignissim ligula.<br /> <span className=\"u-text-normal\"><Checkbox inline name=\"exampleCheckbox666\" className=\"u-m-b-0\">Checkbox</Checkbox></span>\n        </Alert>\n\n        <Alert title=\"Default\" titleIcon=\"checkmark\" size=\"small\">\n          Phasellus eu accumsan diam. Donec sed aliquet quam congue ac. <a href=\"javascript:void(0)\">congue aliquet arcu</a> blandit euismod enim turpis rutrum, dignissim ligula.<br /> <span className=\"u-text-normal\"><Checkbox inline name=\"exampleCheckbox66666\" className=\"u-m-b-0\">Checkbox</Checkbox></span>\n        </Alert>\n\n      </div>\n    );\n  }\n}\nReactDOM.render(<ComponentExample />, mountNode);\n"
 
 /***/ }),
 /* 676 */
@@ -28064,7 +28053,7 @@ module.exports = "class ComponentExample extends React.Component {\n  render() {
 /* 696 */
 /***/ (function(module, exports) {
 
-module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div style={{fontSize:'4rem'}}>\n        <Icon icon=\"cog\" />\n        <Icon icon=\"chevron-right\" />\n        <Icon icon=\"warning\" />\n        <Icon icon=\"email\" bump=\"down\" />\n        <Icon icon=\"arrow-right\" bump=\"up\" />\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
+module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div style={{fontSize:'4rem'}}>\n        <Icon icon=\"cog\" />\n        <Icon icon=\"chevron-right\" />\n        <Icon icon=\"warning\" />\n        <Icon icon=\"email\" />\n        <Icon icon=\"arrow-right\" />\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
 
 /***/ }),
 /* 697 */
