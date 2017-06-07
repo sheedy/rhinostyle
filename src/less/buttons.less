@@ -82,7 +82,8 @@
 // 12. Align text to left to resolve ellipsis half-pixel jitterines while resizing
 // 13. Do not wrap buttons
 // 14. Prevent selection of text
-// 15. Removes inner padding and border in Firefox 4+.
+// 15. Reset letter-spacing
+// 16. Removes inner padding and border in Firefox 4+.
 .button {
   // 1
   appearance: none;
@@ -123,6 +124,8 @@
   text-overflow: ellipsis;
   // 14
   user-select: none;
+  // 15
+  letter-spacing: @base-body-letter-spacing;
 
   // 1. Style
   &::after {
@@ -148,7 +151,7 @@
     }
   }
 
-  // 15
+  // 16
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
