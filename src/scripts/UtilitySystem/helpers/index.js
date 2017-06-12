@@ -1,4 +1,4 @@
-import { Expo } from 'gsap';
+import { Expo } from '../../vendor/TweenMax-latest-beta';
 
 /**
  * Default configuration

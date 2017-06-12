@@ -1,8 +1,8 @@
 import cx from 'classnames';
-import { TimelineMax } from 'gsap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { TimelineMax } from '../vendor/TweenMax-latest-beta';
 import { UtilitySystem } from '../components';
 
 class Cover extends React.Component {

@@ -1,7 +1,7 @@
-import { TimelineMax } from 'gsap';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 
+import { TimelineMax } from '../vendor/TweenMax-latest-beta';
 import { UtilitySystem } from '../components';
 
 class DropdownWrapper extends React.Component {

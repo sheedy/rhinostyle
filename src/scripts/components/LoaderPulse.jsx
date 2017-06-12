@@ -1,6 +1,7 @@
 import cx    from 'classnames';
-import { Linear, TimelineMax } from 'gsap';
 import React from 'react';
+
+import { Linear, TimelineMax } from '../vendor/TweenMax-latest-beta';
 
 class LoaderPulse extends React.Component {
   static displayName = 'RhinoLoaderPulse';

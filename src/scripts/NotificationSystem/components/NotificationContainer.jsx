@@ -1,7 +1,7 @@
-import { TimelineMax } from 'gsap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { TimelineMax } from '../../vendor/TweenMax-latest-beta';
 import { Toast, UtilitySystem } from '../../components';
 import * as NotificationActions from '../actions';
 import NotificationConstants    from '../constants';

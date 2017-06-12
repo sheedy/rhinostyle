@@ -1,5 +1,6 @@
 import 'what-input';
-import { TimelineMax, TweenMax, SteppedEase } from 'gsap';
+
+import { TimelineMax, TweenMax, SteppedEase } from '../vendor/TweenMax-latest-beta';
 import { UtilitySystem } from '../UtilitySystem';
 
 const $body = document.body;
