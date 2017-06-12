@@ -17164,7 +17164,7 @@ var $siteNavigation = document.querySelector('#site-navigation');
 var $siteHeaderMenu = document.querySelector('.site-header__menu');
 
 var navEase = 0.25;
-var navSelectors = [$siteOverlay, $siteNavigation];
+var navSelectors = [$body, $siteOverlay, $siteNavigation];
 var mobileNavTimeline = void 0;
 
 // Timelines
