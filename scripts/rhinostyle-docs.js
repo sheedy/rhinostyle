@@ -20992,7 +20992,7 @@ var Button = function (_React$Component) {
         _this.props.onClick();
       }
     }, _this.loadingRender = function () {
-      var loaderClass = 'button__loader ' + (['primary', 'secondary', 'danger'].includes(_this.props.type) ? 'button__loader--contrast' : 'button__loader--default');
+      var loaderClass = 'button__loader ' + (_this.props.type === 'outline-reversed' ? 'button__loader--contrast' : 'button__loader--default');
 
       var loaderSize = _this.props.size === 'small' ? 'xsmall' : 'small';
 
