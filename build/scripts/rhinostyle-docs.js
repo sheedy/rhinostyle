@@ -20663,18 +20663,37 @@ var Avatar = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Avatar.__proto__ || Object.getPrototypeOf(Avatar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       imageError: false
-    }, _this._handleImageError = function () {
-      _this.setState({ imageError: true });
+    }, _this.checkImage = function () {
+      if (_this.props.image) {
+        var image = new Image();
+
+        image.onerror = function () {
+          _this.setState({
+            imageError: true
+          });
+        };
+
+        image.onload = function () {
+          _this.setState({
+            imageError: false
+          });
+        };
+
+        image.src = _this.props.image;
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Avatar, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.checkImage();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.src !== this.props.image) {
-        this.setState({
-          imageError: false
-        });
+        this.checkImage();
       }
     }
   }, {
@@ -20695,21 +20714,18 @@ var Avatar = function (_React$Component) {
         'avatar--default': type === 'default',
         'avatar--member': type === 'member'
       });
-      var styles = {
-        backgroundImage: 'url(' + image + ')'
-      };
 
       // If image exists, use image for background
-      if (image && !this.state.imageError) {
-        return _react2.default.createElement(
-          'figure',
-          { className: classes, style: styles },
-          _react2.default.createElement('img', { alt: name, onError: this._handleImageError, style: { display: 'none' }, src: image })
-        );
+      if (!this.state.imageError) {
+        var styles = {
+          backgroundImage: 'url(' + image + ')'
+        };
+
+        return _react2.default.createElement('figure', { className: classes, style: styles });
       }
 
       // If no image and no name, use icon
-      if (!image && !name) {
+      if (this.state.imageError && !name) {
         return _react2.default.createElement(
           'figure',
           { className: classes },
@@ -20721,6 +20737,7 @@ var Avatar = function (_React$Component) {
         );
       }
 
+      // Otherwise, show initials
       var splitName = null;
       var initials = null;
 

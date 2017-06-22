@@ -26,17 +26,35 @@ class Avatar extends React.Component {
     imageError: false,
   };
 
+  componentDidMount() {
+    this.checkImage();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.src !== this.props.image) {
-      this.setState({
-        imageError: false,
-      });
+      this.checkImage();
     }
   }
 
-  _handleImageError = () => {
-    this.setState({ imageError: true });
-  };
+  checkImage = () => {
+    if (this.props.image) {
+      const image = new Image();
+
+      image.onerror = () => {
+        this.setState({
+          imageError: true,
+        });
+      };
+
+      image.onload = () => {
+        this.setState({
+          imageError: false,
+        });
+      };
+
+      image.src = this.props.image;
+    }
+  }
 
   render() {
     const { className, image, size, type } = this.props;
@@ -49,21 +67,20 @@ class Avatar extends React.Component {
       'avatar--default':  type === 'default',
       'avatar--member': type === 'member',
     });
-    const styles = {
-      backgroundImage: `url(${image})`,
-    };
 
     // If image exists, use image for background
-    if (image && !this.state.imageError) {
+    if (!this.state.imageError) {
+      const styles = {
+        backgroundImage: `url(${image})`,
+      };
+
       return (
-        <figure className={classes} style={styles}>
-          <img alt={name} onError={this._handleImageError} style={{ display: 'none' }} src={image} />
-        </figure>
+        <figure className={classes} style={styles} />
       );
     }
 
     // If no image and no name, use icon
-    if (!image && !name) {
+    if (this.state.imageError && !name) {
       return (
         <figure className={classes}>
           <svg className="avatar__icon"><use xlinkHref="#icon-user" /></svg>
@@ -71,6 +88,7 @@ class Avatar extends React.Component {
       );
     }
 
+    // Otherwise, show initials
     let splitName = null;
     let initials = null;
 
