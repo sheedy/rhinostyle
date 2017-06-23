@@ -20716,7 +20716,7 @@ var Avatar = function (_React$Component) {
       });
 
       // If image exists, use image for background
-      if (!this.state.imageError) {
+      if (image && !this.state.imageError) {
         var styles = {
           backgroundImage: 'url(' + image + ')'
         };
@@ -20725,7 +20725,7 @@ var Avatar = function (_React$Component) {
       }
 
       // If no image and no name, use icon
-      if (this.state.imageError && !name) {
+      if (!image && !name) {
         return _react2.default.createElement(
           'figure',
           { className: classes },

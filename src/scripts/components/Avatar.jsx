@@ -69,7 +69,7 @@ class Avatar extends React.Component {
     });
 
     // If image exists, use image for background
-    if (!this.state.imageError) {
+    if (image && !this.state.imageError) {
       const styles = {
         backgroundImage: `url(${image})`,
       };
@@ -80,7 +80,7 @@ class Avatar extends React.Component {
     }
 
     // If no image and no name, use icon
-    if (this.state.imageError && !name) {
+    if (!image && !name) {
       return (
         <figure className={classes}>
           <svg className="avatar__icon"><use xlinkHref="#icon-user" /></svg>
