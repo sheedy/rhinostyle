@@ -1,4 +1,5 @@
 import Alert                from './Alert';
+import AppendTest           from './AppendTest';
 import Avatar               from './Avatar';
 import Bucket               from './Bucket';
 import BucketBody           from './BucketBody';
@@ -64,6 +65,7 @@ import { UtilitySystem } from '../UtilitySystem';
 
 export {
   Alert,
+  AppendTest,
   Avatar,
   Bucket,
   BucketBody,
