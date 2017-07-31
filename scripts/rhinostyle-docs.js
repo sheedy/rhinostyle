@@ -14184,13 +14184,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Bucket = function Bucket(props) {
   var className = props.className,
-      size = props.size,
       type = props.type;
 
   var classes = (0, _classnames2.default)('bucket', className, {
-    'bucket--default': type === 'default',
-    'bucket--light': type === 'light',
-    'bucket--small': size === 'small'
+    'bucket--default': type === 'default'
   });
 
   return _react2.default.createElement(
@@ -14205,8 +14202,7 @@ Bucket.displayName = 'RhinoBucket';
 Bucket.propTypes = {
   children: _propTypes2.default.node,
   className: _propTypes2.default.string,
-  size: _propTypes2.default.oneOf(['small']),
-  type: _propTypes2.default.oneOf(['default', 'light', 'primary'])
+  type: _propTypes2.default.oneOf(['default'])
 };
 
 Bucket.defaultProps = {
@@ -16298,6 +16294,10 @@ var Checkbox = function (_React$Component) {
         _this.props.onClick(!_this.state.checked);
       }
 
+      if (_this.props.onChange && _typeof(_this.props.onChange === 'function')) {
+        _this.props.onChange(_this.props.name, !_this.state.checked);
+      }
+
       _this.setState({
         checked: !_this.state.checked
       });
@@ -16348,7 +16348,8 @@ Checkbox.propTypes = {
   disabled: _propTypes2.default.bool,
   isChecked: _propTypes2.default.bool,
   name: _propTypes2.default.string.isRequired,
-  onClick: _propTypes2.default.func
+  onClick: _propTypes2.default.func,
+  onChange: _propTypes2.default.func
 };
 Checkbox.defaultProps = {
   isChecked: false,
@@ -27991,6 +27992,10 @@ var RhinoSwitch = function (_React$Component) {
         _this.props.onClick(!_this.state.checked);
       }
 
+      if (_this.props.onChange && _typeof(_this.props.onChange === 'function')) {
+        _this.props.onChange(_this.props.name, !_this.state.checked);
+      }
+
       _this.setState({
         checked: !_this.state.checked
       });
@@ -28049,7 +28054,8 @@ RhinoSwitch.propTypes = {
   isChecked: _propTypes2.default.bool,
   name: _propTypes2.default.string.isRequired,
   label: _propTypes2.default.string,
-  onClick: _propTypes2.default.func
+  onClick: _propTypes2.default.func,
+  onChange: _propTypes2.default.func
 };
 RhinoSwitch.defaultProps = {
   isChecked: false,
@@ -33368,9 +33374,7 @@ var _BucketHeaderExample2 = _interopRequireDefault(_BucketHeaderExample);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bucketDocs = {
-  className: '[Optional] - Include additional class name(s)',
-  size: '[Optional] - Bucket size -  [small]',
-  type: '[Optional] - Bucket type -  [default | light]'
+  className: '[Optional] - Include additional class name(s)'
 };
 var bucketScope = {
   React: _react2.default,
@@ -33431,67 +33435,16 @@ var BucketApp = function BucketApp() {
       _react2.default.createElement(
         'h3',
         { className: 'site-subheadline' },
-        'Bucket Types'
-      ),
-      _react2.default.createElement(
-        'p',
-        { className: 'site-copy' },
-        _react2.default.createElement(
-          'code',
-          null,
-          'type="default | light"'
-        )
+        'Bucket'
       ),
       _react2.default.createElement(
         _components.Bucket,
         null,
-        _react2.default.createElement(_components.BucketHeader, { title: 'Bucket Default', icon: 'pencil' }),
+        _react2.default.createElement(_components.BucketHeader, { title: 'Bucket', icon: 'pencil' }),
         _react2.default.createElement(
           _components.BucketBody,
           null,
           'Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.'
-        )
-      ),
-      _react2.default.createElement(
-        _components.Bucket,
-        { type: 'light' },
-        _react2.default.createElement(_components.BucketHeader, { title: 'Bucket Light', icon: 'cog' }),
-        _react2.default.createElement(
-          _components.BucketBody,
-          null,
-          'Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.'
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'section',
-      { className: 'site-section' },
-      _react2.default.createElement(
-        'h3',
-        { className: 'site-subheadline' },
-        'Bucket Sizes'
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'p',
-          { className: 'site-copy' },
-          _react2.default.createElement(
-            'code',
-            null,
-            'size="small"'
-          )
-        ),
-        _react2.default.createElement(
-          _components.Bucket,
-          { size: 'small' },
-          _react2.default.createElement(_components.BucketHeader, { title: 'Bucket Header', icon: 'pencil' }),
-          _react2.default.createElement(
-            _components.BucketBody,
-            null,
-            'Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.'
-          )
         )
       )
     ),
@@ -33524,7 +33477,7 @@ _reactDom2.default.render(_react2.default.createElement(BucketApp, null), docume
 /* 942 */
 /***/ (function(module, exports) {
 
-module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div>\n        <Bucket>\n          <BucketHeader avatar={{image: \"//source.unsplash.com/category/people/200x200\", name: \"Robert Plant\", type: \"member\"}} title=\"Bucket Header\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader title=\"Bucket Header\" icon=\"pencil\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader title=\"Bucket Header With Background\" icon=\"pencil\" className=\"u-bg-gray-lightest\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader className=\"u-flex-justify-between\" title=\"Bucket Header With Extra Content\" icon=\"pencil\">\n            <div>\n              <a href=\"\" className=\"u-text-underline\">Edit</a> | <a href=\"\" className=\"u-text-underline\">Delete</a>\n            </div>\n          </BucketHeader>\n          <BucketBody>Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader className=\"u-bg-gray-lightest\" avatar={{image: \"//source.unsplash.com/category/people/200x200\", name: \"Robert Plant\", type: \"member\"}}>Bucket Header Without Title Property</BucketHeader>\n          <BucketBody>Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketBody>Bucket body in a default bucket.</BucketBody>\n        </Bucket>\n\n        <Bucket type=\"light\">\n          <BucketBody>Bucket body in a light bucket.</BucketBody>\n        </Bucket>\n\n\n        <Bucket type=\"primary\">\n          <BucketBody>Bucket body in a primary bucket.</BucketBody>\n        </Bucket>\n\n        <Bucket size=\"small\">\n          <BucketBody>Bucket body in a small bucket.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketBody className=\"u-bg-gray-lightest\">Bucket body with background.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <Table>\n            <thead>\n              <tr>\n                <th>#</th>\n                <th>First Name</th>\n                <th>Last Name</th>\n                <th>Username</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1</td>\n                <td>Ben</td>\n                <td>Bruning</td>\n                <td>@bruning</td>\n              </tr>\n              <tr>\n                <td>2</td>\n                <td>Blake</td>\n                <td>Guilloud</td>\n                <td>@guilloud</td>\n              </tr>\n              <tr>\n                <td>3</td>\n                <td>Keaton</td>\n                <td>Foster</td>\n                <td>@foster</td>\n              </tr>\n            </tbody>\n          </Table>\n        </Bucket>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
+module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div>\n        <Bucket>\n          <BucketHeader avatar={{image: \"//source.unsplash.com/category/people/200x200\", name: \"Robert Plant\", type: \"member\"}} title=\"Bucket Header\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader title=\"Bucket Header\" icon=\"pencil\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader title=\"Bucket Header With Background\" icon=\"pencil\" className=\"u-bg-gray-lightest\" />\n          <BucketBody>Bucket body.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader className=\"u-flex-justify-between\" title=\"Bucket Header With Extra Content\" icon=\"pencil\">\n            <div>\n              <a href=\"\" className=\"u-text-underline\">Edit</a> | <a href=\"\" className=\"u-text-underline\">Delete</a>\n            </div>\n          </BucketHeader>\n          <BucketBody>Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketHeader className=\"u-bg-gray-lightest\" avatar={{image: \"//source.unsplash.com/category/people/200x200\", name: \"Robert Plant\", type: \"member\"}}>Bucket Header Without Title Property</BucketHeader>\n          <BucketBody>Bucket body. Etiam eu condimentum sem. Etiam a blandit erat. Nullam a sem at leo finibus rutrum pulvinar vel mauris. Nam purus velit, laoreet in mattis congue, consectetur in eros.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketBody>Bucket body in a default bucket.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <BucketBody className=\"u-bg-gray-lightest\">Bucket body with background.</BucketBody>\n        </Bucket>\n\n        <Bucket>\n          <Table>\n            <thead>\n              <tr>\n                <th>#</th>\n                <th>First Name</th>\n                <th>Last Name</th>\n                <th>Username</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>1</td>\n                <td>Ben</td>\n                <td>Bruning</td>\n                <td>@bruning</td>\n              </tr>\n              <tr>\n                <td>2</td>\n                <td>Blake</td>\n                <td>Guilloud</td>\n                <td>@guilloud</td>\n              </tr>\n              <tr>\n                <td>3</td>\n                <td>Keaton</td>\n                <td>Foster</td>\n                <td>@foster</td>\n              </tr>\n            </tbody>\n          </Table>\n        </Bucket>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
 
 /***/ }),
 /* 943 */
@@ -35620,7 +35573,8 @@ var checkboxDocs = {
   isChecked: '[Optional] - Set initial checked state',
   disabled: '[Optional] - Disable the checkbox',
   name: '[Required] - An id, and label for the checkbox',
-  onClick: '[Optional] - A function you want to trigger when the checkbox is toggled'
+  onClick: '[Optional] - A function you want to trigger when the checkbox is toggled',
+  onChange: '[Optional] - A function that returns the name and value of the checkbox'
 };
 var checkboxScope = {
   React: _react2.default,
@@ -35654,7 +35608,9 @@ var switchDocs = {
   disabled: '[Optional] - Disable the switch',
   isChecked: '[Optional] - Set initial on/off state',
   label: '[Optional] - A label for the switch',
-  name: '[Optional] - The name, and the basis of the id for the switch'
+  name: '[Optional] - The name, and the basis of the id for the switch',
+  onChange: '[Optional] - A function that returns the name and value of the switch',
+  onClick: '[Optional] - A function that returns the value of the switch'
 };
 var switchScope = {
   React: _react2.default,
@@ -36321,7 +36277,7 @@ module.exports = "class ComponentExample extends React.Component {\n  render() {
 /* 970 */
 /***/ (function(module, exports) {
 
-module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <div className=\"site-example-checkbox\">\n        <CheckboxGroup label=\"Checkboxes\">\n          <Checkbox name=\"exampleCheckbox31\">Checkbox One</Checkbox>\n          <Checkbox name=\"exampleCheckbox32\">Checkbox Two</Checkbox>\n          <Checkbox name=\"exampleCheckbox33\">Checkbox Three</Checkbox>\n        </CheckboxGroup>\n        <CheckboxGroup label=\"Checkboxes (inline)\" inline>\n          <Checkbox isChecked name=\"exampleCheckbox34\">Checkbox One</Checkbox>\n          <Checkbox name=\"exampleCheckbox35\">Checkbox Two</Checkbox>\n          <Checkbox name=\"exampleCheckbox36\">Checkbox Three</Checkbox>\n        </CheckboxGroup>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
+module.exports = "class ComponentExample extends React.Component {\n  state = {\n    exampleCheckbox31: true,\n    exampleCheckbox32: false,\n    exampleCheckbox33: false,\n  };\n\n  handleChange = (name, value) => {\n    this.setState({ [name]: value });\n  }\n\n  render() {\n    return (\n      <div className=\"site-example-checkbox\">\n        <CheckboxGroup label=\"Checkboxes\">\n          <Checkbox onChange={this.handleChange} isChecked={this.state.exampleCheckbox31} name=\"exampleCheckbox31\">Checkbox One</Checkbox>\n          <Checkbox onChange={this.handleChange} isChecked={this.state.exampleCheckbox32} name=\"exampleCheckbox32\">Checkbox Two</Checkbox>\n          <Checkbox onChange={this.handleChange} isChecked={this.state.exampleCheckbox33} name=\"exampleCheckbox33\">Checkbox Three</Checkbox>\n        </CheckboxGroup>\n        <CheckboxGroup label=\"Checkboxes (inline)\" inline>\n          <Checkbox isChecked name=\"exampleCheckbox34\">Checkbox One</Checkbox>\n          <Checkbox name=\"exampleCheckbox35\">Checkbox Two</Checkbox>\n          <Checkbox name=\"exampleCheckbox36\">Checkbox Three</Checkbox>\n        </CheckboxGroup>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
 
 /***/ }),
 /* 971 */
@@ -36333,7 +36289,7 @@ module.exports = "class ComponentExample extends React.Component {\n  optionalCa
 /* 972 */
 /***/ (function(module, exports) {
 
-module.exports = "class ComponentExample extends React.Component {\n  render() {\n    return (\n      <RhinoSwitch label=\"Switcher\" name=\"exampleSwitch4\" />\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
+module.exports = "class ComponentExample extends React.Component {\n  state = {\n    exampleSwitch4: false,\n  };\n\n  handleChange = (name, value) => {\n    this.setState({ [name]: value });\n  };\n\n  render() {\n    return (\n      <RhinoSwitch isChecked={this.state.exampleSwitch4} onChange={this.handleChange} label=\"Switcher\" name=\"exampleSwitch4\" />\n    );\n  }\n}\n\nReactDOM.render(<ComponentExample />, mountNode);\n"
 
 /***/ }),
 /* 973 */
